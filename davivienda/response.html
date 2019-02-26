@@ -1,12 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Formulario Pruebas Respuesta</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .ro {
+            border: 1px solid red;
+        }
+
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background-color: #f1f1f1;
+        }
+
+        .container-main {
+            height: 100%;
+            overflow: hidden;
+            overflow-y: auto;
+            padding: 1.5em 1em;
+        }
+
+        .content {
+            max-width: 650px;
+            background: white;
+            margin: 0 auto;
+            border-radius: 5px;
+            padding: .75em 1em;
+            border: 1px solid #e4e4e4;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+        }
+
+        .logo-comercio img {
+            width: auto;
+            margin: auto;
+            max-height: 80px;
+            display: block;
+        }
+
+        header {
+            border-bottom: 1px solid #E4E4E4;
+            padding-bottom: .75em;
+        }
+
+        footer {
+            margin: 1.5em auto;
+            width: 100%;
+            max-width: 650px;
+        }
+
+        footer .da-logo img {
+            max-height: 35px;
+            max-width: 220px;
+        }
+
+        footer .epayco-logo img {
+            max-height: 35px;
+            margin: 0;
+            max-width: 100px;
+        }
+    </style>
 </head>
+
 <body>
-    <h2>Response</h2>
+    <div class="container-main">
+        <div class="content">
+            <div class="col-12  m-0 ">
+                <header id="main-header">
+                    <div class="row">
+                        <div class="col-lg-12 logo-comercio">
+                            <img class="" src="https://s3.amazonaws.com/multimedia-epayco/dashboard/davivienda/davivienda-vertical.svg" style="">
+                        </div>
+                    </div>
+                </header>
+                <div class="col-12 m-0 px-0">
+                    <div class="col-12 px-0 py-3 text-center">
+                        <h4 class="text-center"> Respuesta de la Transacción </h4>
+                    </div>
+                    <div class="table-responsive pb-3">
+                        <table class="table table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>Referencia</td>
+                                    <td id="referencia"></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Fecha</td>
+                                    <td id="fecha" class=""></td>
+                                </tr>
+                                <tr>
+                                    <td>Respuesta</td>
+                                    <td id="respuesta"></td>
+                                </tr>
+                                <tr>
+                                    <td>Motivo</td>
+                                    <td id="motivo"></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Banco</td>
+                                    <td class="" id="banco">
+                                </tr>
+                                <tr>
+                                    <td class="bold">Recibo</td>
+                                    <td id="recibo"></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Total</td>
+                                    <td class="" id="total">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="">
+            <!--<div  class="d-flex align-items-start justify-content-between col-12 px-0">-->
+            <div class="d-flex align-items-start justify-content-end">
+                <div class="col-6 px-0 text-right epayco-logo">
+                    <small>Pagos seguros con</small>
+                    <img src="https://s3.amazonaws.com/multimedia-epayco/dashboard/epayco-logo.svg" alt="">
+                </div>
+                <!--<div class="col-6 text-right px-0 da-logo">-->
+                <!--<img src="https://s3.amazonaws.com/multimedia-epayco/dashboard/logo-davivienda.png" alt="">-->
+                <!--</div>-->
+            </div>
+        </footer>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function getQueryParam(param) {
+            location.search.substr(1)
+                .split("&")
+                .some(function (item) { // returns first occurence and stops
+                    return item.split("=")[0] == param && (param = item.split("=")[1])
+                })
+            return param
+        }
+        $(document).ready(function () {
+            //llave publica del comercio
+            //Referencia de payco que viene por url
+            var ref_payco = getQueryParam('ref_payco');
+            //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
+            var urlapp = "https://secure.epayco.co/validation/v1/reference/" + ref_payco;
+            $.get(urlapp, function (response) {
+                if (response.success) {
+                    if (response.data.x_cod_response == 1) {
+                        //Codigo personalizado
+                        // alert("Transaccion Aprobada");
+                        console.log('transacción aceptada');
+                    }
+                    //Transaccion Rechazada
+                    if (response.data.x_cod_response == 2) {
+                        console.log('transacción rechazada');
+                    }
+                    //Transaccion Pendiente
+                    if (response.data.x_cod_response == 3) {
+                        console.log('transacción pendiente');
+                    }
+                    //Transaccion Fallida
+                    if (response.data.x_cod_response == 4) {
+                        console.log('transacción fallida');
+                    }
+                    $('#fecha').html(response.data.x_transaction_date);
+                    $('#respuesta').html(response.data.x_response);
+                    $('#referencia').text(response.data.x_id_invoice);
+                    $('#motivo').text(response.data.x_response_reason_text);
+                    $('#recibo').text(response.data.x_transaction_id);
+                    $('#banco').text(response.data.x_bank_name);
+                    $('#autorizacion').text(response.data.x_approval_code);
+                    $('#total').text(response.data.x_amount + ' ' + response.data.x_currency_code);
+                } else {
+                    // alert("Error consultando la información");
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
